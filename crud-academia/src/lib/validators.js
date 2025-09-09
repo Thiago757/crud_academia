@@ -11,3 +11,11 @@ export const alunoSchema = z.object({
     bairro: z.string().optional(),
     endereco: z.string().optional(),
 });
+
+export const aulaSchema = z.object({
+  descricao: z.string().min(3, { message: 'A descrição deve ter no mínimo 3 caracteres.' }),
+  tipo: z.string().min(3, { message: 'O tipo da aula é obrigatório.' }),
+  dataHora: z.string().nonempty({ message: 'A data e hora são obrigatórias.' }),
+  capacidadeMaxima: z.coerce.number().min(1, { message: 'A capacidade deve ser no mínimo 1.' }),
+  permiteAposInicio: z.boolean().default(false),
+});

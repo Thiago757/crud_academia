@@ -1,7 +1,8 @@
-import { useEffect, useState, useCallback } from 'react'; // 1. Importe o useCallback
+import { useEffect, useState, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useAppStore } from '@/store/useAppStore';
 import { AlunoForm } from '@/components/forms/AlunoForm';
+import { Badge } from "@/components/ui/badge";
 
 export function AlunoEditPage() {
   const { id } = useParams();
@@ -36,9 +37,16 @@ export function AlunoEditPage() {
     return <p className="text-center text-muted-foreground mt-8">Aluno não encontrado.</p>;
   }
 
-  return (
+ return (
     <div className="max-w-3xl mx-auto">
-      <h1 className="text-3xl font-bold mb-2">Editar Aluno</h1>
+      <div className="flex items-center gap-4 mb-2">
+        <h1 className="text-3xl font-bold">Editar Aluno</h1>
+        {aluno.status && (
+          <Badge variant={aluno.status === 'ativo' ? 'default' : 'destructive'} className="capitalize">
+            {aluno.status}
+          </Badge>
+        )}
+      </div>
       <p className="text-muted-foreground mb-8">Altere os dados abaixo e salve as modificações.</p>
       <AlunoForm alunoParaEditar={aluno} onSave={handleSave} />
     </div>
