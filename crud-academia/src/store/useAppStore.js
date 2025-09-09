@@ -35,7 +35,7 @@ export const useAppStore = create((set) => ({
 
   updateAluno: async (id, alunoData) => {
     try {
-      const alunoAtualizado = await api.updateAlunos(id, alunoData);
+      const alunoAtualizado = await api.updateAluno(id, alunoData);
       set((state) => ({
         alunos: state.alunos.map(aluno =>
           aluno.id === id ? alunoAtualizado : aluno

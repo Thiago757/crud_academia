@@ -32,6 +32,7 @@ export function AlunoForm({ alunoParaEditar, onSave }) {
 
   const onSubmit = async (data) => {
     setIsSubmitting(true);
+    console.log('1. [Formulário] OnSubmit foi chamado. Dados:', data);
     if (onSave) {
       await onSave(data);
     }
