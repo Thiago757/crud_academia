@@ -14,14 +14,8 @@ import {
 import { MoreHorizontal } from 'lucide-react';
 
 export function AlunosListPage() {
-  const { alunos, isLoading, fetchAlunos, toggleStatusAluno } = useAppStore();
+  const { alunos, isLoading, toggleStatusAluno } = useAppStore();
   const [mostrarInativos, setMostrarInativos] = useState(false);
-
-  useEffect(() => {
-    if (alunos.length === 0) {
-      fetchAlunos();
-    }
-  }, [fetchAlunos, alunos.length]);
 
   const formatarData = (data) => {
     if (!data) return 'Data não informada';
@@ -54,7 +48,7 @@ export function AlunosListPage() {
               checked={mostrarInativos}
               onCheckedChange={setMostrarInativos}
             />
-            <Label htmlFor="mostrar-inativos">Mostrar inativos</Label>
+            <Label htmlFor="mostrar-inativos">Apenas inativos</Label>
           </div>
           <Button asChild>
             <Link to="/alunos/novo">Adicionar Novo Aluno</Link>

@@ -12,7 +12,6 @@ export function AulaDetalhesModal({ aulaId, isOpen, onOpenChange }) {
   const { aulas, alunos, adicionarParticipante, removerParticipante, finalizarAula} = useAppStore();
   const [openCombobox, setOpenCombobox] = useState(false)
   const [alunoSelecionado, setAlunoSelecionado] = useState("")
-
   const aula = aulas.find(a => a.id === aulaId);
 
   if (!aula) {

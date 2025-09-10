@@ -56,7 +56,7 @@ export const getAlunosPorId = async (id) => {
 
 export const createAluno = async (data) => {
   return new Promise(resolve => {
-    const novoAluno = { ...data, id: Date.now().toString() };
+    const novoAluno = { ...data, id: Date.now().toString(), status: 'ativo' };
     alunos.push(novoAluno);
     localStorage.setItem(ALUNOS_STORAGE_KEY, JSON.stringify(alunos));
     setTimeout(() => resolve(novoAluno), LATENCY);
